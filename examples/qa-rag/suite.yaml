@@ -1,0 +1,22 @@
+name: qa-rag
+description: Evaluate a toy RAG QA system on a 30-row golden set.
+dataset: golden.jsonl
+judge_model: claude-haiku-4-5-20251001
+parallelism: 8
+seed: 42
+
+metrics:
+  - name: faithfulness
+    kind: judge
+    rubric: rubrics/faithfulness.yaml
+    target: 0.70
+
+  - name: idk_when_no_ctx
+    kind: regex
+    pattern: "(?i)i don't know"
+    target: 0.90
+    higher_is_better: false  # we WANT this to fire only when the row has no context
+
+  - name: closed_book
+    kind: exact_match
+    target: 0.50

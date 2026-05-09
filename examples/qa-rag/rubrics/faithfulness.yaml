@@ -1,0 +1,38 @@
+name: faithfulness
+description: |
+  Does the candidate answer stay grounded in the provided context, and avoid
+  inventing facts not present there? This is the canonical "is the model
+  hallucinating?" question for retrieval-augmented systems.
+
+criteria:
+  - name: grounded
+    description: Every factual claim in the answer is supported by the context.
+    scale: 5
+    weight: 2.0
+    anchors:
+      1: Multiple unsupported claims or contradictions with context.
+      3: Some claims supported, others not clearly anchored.
+      5: Every claim traces directly to the context.
+
+  - name: no_invention
+    description: The answer adds no facts not present in the context.
+    scale: 5
+    weight: 1.5
+    anchors:
+      1: Adds substantive facts beyond the context.
+      3: Adds minor framing but no new substantive facts.
+      5: Stays strictly within what the context provides.
+
+  - name: completeness
+    description: The answer covers the question with enough detail to be useful.
+    scale: 5
+    weight: 1.0
+    anchors:
+      1: Misses the point of the question entirely.
+      3: Partial answer; useful but missing detail.
+      5: Complete and to the point.
+
+calibration:
+  kappa_floor: 0.7
+  min_samples: 25
+  bias_threshold: 0.15

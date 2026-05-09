@@ -1,0 +1,21 @@
+name: qa-rag
+description: Faithfulness suite used by the regression-demo / real-PR walkthrough.
+dataset: golden.jsonl
+judge_model: claude-haiku-4-5-20251001
+parallelism: 8
+seed: 42
+
+metrics:
+  - name: faithfulness
+    kind: judge
+    rubric: rubrics/faithfulness.yaml
+    target: 0.70
+
+  - name: idk_when_no_ctx
+    kind: regex
+    pattern: "(?i)i don't know"
+    target: 0.90
+
+  - name: closed_book
+    kind: exact_match
+    target: 0.50

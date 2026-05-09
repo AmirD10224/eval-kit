@@ -1,0 +1,23 @@
+name: intent_match
+description: |
+  Did the agent route the user to the correct intent label, given the
+  utterance and the closed set of valid intents?
+
+criteria:
+  - name: correct_intent
+    description: The predicted intent matches the gold intent for this utterance.
+    scale: 5
+    anchors:
+      1: Routed to the wrong intent.
+      3: Ambiguous case where the choice is debatable.
+      5: Correct intent, confidently routed.
+
+  - name: structured_output
+    description: Output is valid JSON with the required `intent` field.
+    scale: 5
+    weight: 0.5
+
+calibration:
+  kappa_floor: 0.7
+  min_samples: 15
+  bias_threshold: 0.15

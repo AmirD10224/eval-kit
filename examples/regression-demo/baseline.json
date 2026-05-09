@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "suite": "qa-rag",
+  "timestamp": "2026-05-05T17:42:11+00:00",
+  "metrics": {
+    "faithfulness": 0.847,
+    "idk_when_no_ctx": 0.967,
+    "closed_book": 0.733,
+    "answer_relevancy": 0.812
+  },
+  "n_samples": 30,
+  "judge_model": "claude-haiku-4-5-20251001",
+  "git_sha": "be0bdb2c11f9d3a4b5e6c7d8e9f0a1b2c3d4e5f6",
+  "seed": 42,
+  "duration_seconds": 88.4,
+  "per_metric": {
+    "faithfulness": { "kind": "judge", "mean": 0.847, "n": 30, "target": 0.7, "higher_is_better": true },
+    "idk_when_no_ctx": { "kind": "regex", "mean": 0.967, "n": 30, "target": 0.9, "higher_is_better": true },
+    "closed_book": { "kind": "exact_match", "mean": 0.733, "n": 30, "target": 0.5, "higher_is_better": true },
+    "answer_relevancy": { "kind": "ragas", "mean": 0.812, "n": 30, "target": 0.7, "higher_is_better": true }
+  }
+}

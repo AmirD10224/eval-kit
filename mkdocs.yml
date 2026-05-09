@@ -1,0 +1,95 @@
+site_name: EvalKit
+site_description: Production-grade eval harness for LLM apps.
+site_url: https://AmirD10224.github.io/eval-kit/
+repo_url: https://github.com/AmirD10224/eval-kit
+repo_name: AmirD10224/eval-kit
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - navigation.tracking
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+            show_source: true
+            show_if_no_docstring: false
+            members_order: source
+            heading_level: 2
+
+nav:
+  - Home: index.md
+  - Quickstart: quickstart.md
+  - Concepts:
+      - Calibration: concepts/calibration.md
+      - Synthetic data: concepts/synthetic-data.md
+      - LLM-as-judge: concepts/llm-as-judge.md
+      - Regression detection: concepts/regression-detection.md
+      - Golden datasets: concepts/golden-datasets.md
+      - Runner: concepts/runner.md
+  - Guides:
+      - GitHub Action: guides/github-action.md
+      - Custom judge: guides/custom-judge.md
+      - Langfuse: guides/langfuse-integration.md
+      - Braintrust: guides/braintrust-integration.md
+      - Real-PR demo: guides/real-pr-demo.md
+  - API: api/index.md
+  - Launch post: launch-post.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/AmirD10224

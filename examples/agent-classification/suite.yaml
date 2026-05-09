@@ -1,0 +1,17 @@
+name: agent-classification
+description: Eval a 5-class intent classifier
+dataset: golden.jsonl
+judge_model: claude-haiku-4-5-20251001
+seed: 42
+parallelism: 4
+
+metrics:
+  - name: intent_match
+    kind: judge
+    rubric: rubrics/intent.yaml
+    target: 0.80
+
+  - name: shape_check
+    kind: regex
+    pattern: '"intent"\s*:'
+    target: 1.00

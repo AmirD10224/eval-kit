@@ -1,0 +1,20 @@
+{"id": "intent-000", "input": {"utterance": "I'd like a refund for my last order."}, "expected": {"intent": "refund"}, "labels": [{"rater": "human-1", "score": 5}, {"rater": "human-2", "score": 5}]}
+{"id": "intent-001", "input": {"utterance": "Can you tell me my checking account balance?"}, "expected": {"intent": "balance"}, "labels": [{"rater": "human-1", "score": 5}, {"rater": "human-2", "score": 5}]}
+{"id": "intent-002", "input": {"utterance": "Move $200 from savings to checking."}, "expected": {"intent": "transfer"}, "labels": [{"rater": "human-1", "score": 5}, {"rater": "human-2", "score": 5}]}
+{"id": "intent-003", "input": {"utterance": "My card got stolen, I need help."}, "expected": {"intent": "support"}, "labels": [{"rater": "human-1", "score": 5}, {"rater": "human-2", "score": 5}]}
+{"id": "intent-004", "input": {"utterance": "How do I reset my password?"}, "expected": {"intent": "support"}, "labels": [{"rater": "human-1", "score": 5}, {"rater": "human-2", "score": 5}]}
+{"id": "intent-005", "input": {"utterance": "Send 500 to my landlord"}, "expected": {"intent": "transfer"}, "labels": [{"rater": "human-1", "score": 5}, {"rater": "human-2", "score": 5}]}
+{"id": "intent-006", "input": {"utterance": "What's left on my Visa?"}, "expected": {"intent": "balance"}, "labels": [{"rater": "human-1", "score": 5}, {"rater": "human-2", "score": 5}]}
+{"id": "intent-007", "input": {"utterance": "I want my money back, this product is broken."}, "expected": {"intent": "refund"}, "labels": [{"rater": "human-1", "score": 5}, {"rater": "human-2", "score": 5}]}
+{"id": "intent-008", "input": {"utterance": "Tell me a joke."}, "expected": {"intent": "unknown"}, "labels": [{"rater": "human-1", "score": 5}, {"rater": "human-2", "score": 4}]}
+{"id": "intent-009", "input": {"utterance": "Why is the sky blue?"}, "expected": {"intent": "unknown"}, "labels": [{"rater": "human-1", "score": 5}, {"rater": "human-2", "score": 4}]}
+{"id": "intent-010", "input": {"utterance": "Refund please."}, "expected": {"intent": "refund"}, "labels": [{"rater": "human-1", "score": 5}, {"rater": "human-2", "score": 5}]}
+{"id": "intent-011", "input": {"utterance": "Wire 1000 EUR to IBAN DE..."}, "expected": {"intent": "transfer"}, "labels": [{"rater": "human-1", "score": 5}, {"rater": "human-2", "score": 5}]}
+{"id": "intent-012", "input": {"utterance": "Account balance?"}, "expected": {"intent": "balance"}, "labels": [{"rater": "human-1", "score": 5}, {"rater": "human-2", "score": 5}]}
+{"id": "intent-013", "input": {"utterance": "My online banking is broken, please help."}, "expected": {"intent": "support"}, "labels": [{"rater": "human-1", "score": 5}, {"rater": "human-2", "score": 5}]}
+{"id": "intent-014", "input": {"utterance": "balance?"}, "expected": {"intent": "balance"}, "labels": [{"rater": "human-1", "score": 5}, {"rater": "human-2", "score": 5}]}
+{"id": "intent-015", "input": {"utterance": "transfer 50 to alice"}, "expected": {"intent": "transfer"}, "labels": [{"rater": "human-1", "score": 5}, {"rater": "human-2", "score": 5}]}
+{"id": "intent-016", "input": {"utterance": "RefUnD on order 5712"}, "expected": {"intent": "refund"}, "labels": [{"rater": "human-1", "score": 5}, {"rater": "human-2", "score": 5}]}
+{"id": "intent-017", "input": {"utterance": "can someone help me, my account is locked"}, "expected": {"intent": "support"}, "labels": [{"rater": "human-1", "score": 5}, {"rater": "human-2", "score": 5}]}
+{"id": "intent-018", "input": {"utterance": "how much do I have"}, "expected": {"intent": "balance"}, "labels": [{"rater": "human-1", "score": 5}, {"rater": "human-2", "score": 5}]}
+{"id": "intent-019", "input": {"utterance": "what's the meaning of life"}, "expected": {"intent": "unknown"}, "labels": [{"rater": "human-1", "score": 5}, {"rater": "human-2", "score": 4}]}

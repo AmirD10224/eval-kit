@@ -1,0 +1,78 @@
+name: "EvalKit"
+description: "Run EvalKit on a PR, post the metric diff as a comment, and fail the check on regressions."
+author: "Amir Dhibi"
+branding:
+  icon: check-circle
+  color: blue
+
+inputs:
+  suite:
+    description: "Path to the suite YAML."
+    required: true
+  baseline:
+    description: "Git ref of the baseline (e.g. 'main') or path to a baseline JSON report."
+    required: false
+    default: "main"
+  predictions:
+    description: "Optional path to a predictions JSONL."
+    required: false
+  output:
+    description: "Where to write the current run's JSON report."
+    required: false
+    default: "evalkit-report.json"
+  fail-on-regression:
+    description: "Threshold in percentage points; if any tracked metric regresses by more than this, fail the job."
+    required: false
+    default: "5"
+  comment:
+    description: "Whether to post a PR comment with the metric diff."
+    required: false
+    default: "true"
+  python-version:
+    description: "Python version to use."
+    required: false
+    default: "3.12"
+
+outputs:
+  has_regressions:
+    description: "true if any metric regressed beyond the threshold."
+    value: ${{ steps.run.outputs.has_regressions }}
+  report_path:
+    description: "Path to the JSON report artifact."
+    value: ${{ steps.run.outputs.report_path }}
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ inputs.python-version }}
+
+    - name: Install EvalKit
+      shell: bash
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install "evalkit-oss[ragas]"
+
+    - name: Run EvalKit
+      id: run
+      shell: bash
+      env:
+        ANTHROPIC_API_KEY: ${{ env.ANTHROPIC_API_KEY }}
+        GITHUB_TOKEN: ${{ env.GITHUB_TOKEN || github.token }}
+        EVALKIT_SUITE: ${{ inputs.suite }}
+        EVALKIT_BASELINE: ${{ inputs.baseline }}
+        EVALKIT_OUTPUT: ${{ inputs.output }}
+        EVALKIT_THRESHOLD: ${{ inputs.fail-on-regression }}
+        EVALKIT_COMMENT: ${{ inputs.comment }}
+        EVALKIT_PREDICTIONS: ${{ inputs.predictions }}
+      run: python "${{ github.action_path }}/action/action_main.py"
+
+    - name: Upload report artifact
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: evalkit-report
+        path: ${{ inputs.output }}
+        if-no-files-found: ignore
