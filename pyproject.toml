@@ -193,6 +193,23 @@ module = [
 ]
 ignore_missing_imports = true
 
+# The adapter modules wrap third-party APIs (langfuse, inspect-ai, etc.) that
+# rev independently. The core library stays strict; the adapters get a
+# looser contract because we don't control their type surface.
+[[tool.mypy.overrides]]
+module = [
+    "evalkit.adapters.*",
+]
+disallow_untyped_calls = false
+warn_unused_ignores = false
+disable_error_code = [
+    "attr-defined",
+    "list-item",
+    "arg-type",
+    "no-untyped-def",
+    "no-any-return",
+]
+
 [tool.pytest.ini_options]
 # Note: coverage flags live in CI invocations (see .github/workflows/ci.yml),
 # not here, so contributors running a focused subset (`pytest tests/unit/test_X.py`)
