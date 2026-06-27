@@ -108,8 +108,7 @@ export default function RootLayout({
                 <FooterLink href="#" external>Bias auditing</FooterLink>
               </FooterCol>
               <FooterCol title="Maintainer">
-                <FooterLink href="https://github.com/AmirD10224" external>Amir Dhibi</FooterLink>
-                <FooterLink href="mailto:amir10.dhibi@gmail.com">Email</FooterLink>
+                <li className="text-[13.5px] text-[var(--color-fg-mute)]">Amir Dhibi</li>
               </FooterCol>
             </div>
             <div className="border-t border-[var(--color-line)]">
